@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+// Enable Spring Security AuthenticationManager
+
 // Do encryption before saving the data for security reasons
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
