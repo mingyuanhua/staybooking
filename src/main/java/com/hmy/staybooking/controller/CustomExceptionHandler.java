@@ -1,5 +1,6 @@
 package com.hmy.staybooking.controller;
 
+import com.hmy.staybooking.exception.StayNotExistException;
 import com.hmy.staybooking.exception.UserAlreadyExistException;
 import com.hmy.staybooking.exception.UserNotExistException;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,11 @@ public class CustomExceptionHandler {
     @ExceptionHandler(UserNotExistException.class)
     public final ResponseEntity<String> handleUserNotExistExceptions(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(StayNotExistException.class)
+    public final ResponseEntity<String> handleStayNotExistExceptions(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
 }
