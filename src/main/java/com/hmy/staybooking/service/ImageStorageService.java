@@ -16,7 +16,6 @@ import java.util.UUID;
 @Service
 public class ImageStorageService {
 
-    // add the bucket name as the private field and inject the value from the application.properties
     @Value("${gcs.bucket}")
     private String bucketName;
 
@@ -26,7 +25,6 @@ public class ImageStorageService {
         this.storage = storage;
     }
 
-    // implement save method to save the given image to GCS
     public String save(MultipartFile file) throws GCSUploadException {
         String filename = UUID.randomUUID().toString();
         BlobInfo blobInfo = null;
@@ -46,4 +44,3 @@ public class ImageStorageService {
     }
 
 }
-
