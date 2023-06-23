@@ -43,4 +43,3 @@ public class StayImage implements Serializable {
         this.stay = stay;
     }
 }
-
