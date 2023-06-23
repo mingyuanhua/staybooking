@@ -32,7 +32,6 @@ public class Stay implements Serializable {
     @OneToMany(mappedBy = "stay", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<StayReservedDate> reservedDates;
 
-    // add a list of StayImage as a private field
     @OneToMany(mappedBy = "stay", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<StayImage> images;
 
@@ -158,4 +157,3 @@ public class Stay implements Serializable {
     }
 
 }
-
