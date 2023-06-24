@@ -1,9 +1,6 @@
 package com.hmy.staybooking.controller;
 
-import com.hmy.staybooking.exception.GCSUploadException;
-import com.hmy.staybooking.exception.StayNotExistException;
-import com.hmy.staybooking.exception.UserAlreadyExistException;
-import com.hmy.staybooking.exception.UserNotExistException;
+import com.hmy.staybooking.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -34,4 +31,10 @@ public class CustomExceptionHandler {
     public final ResponseEntity<String> handleGCSUploadExceptions(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(InvalidSearchDateException.class)
+    public final ResponseEntity<String> handleInvalidSearchDateExceptions(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }
