@@ -1,5 +1,6 @@
 package com.hmy.staybooking.controller;
 
+import com.hmy.staybooking.exception.GCSUploadException;
 import com.hmy.staybooking.exception.StayNotExistException;
 import com.hmy.staybooking.exception.UserAlreadyExistException;
 import com.hmy.staybooking.exception.UserNotExistException;
@@ -14,16 +15,14 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class CustomExceptionHandler {
 
-    // ExceptionHandler matches each exception to the corresponding handler function
     @ExceptionHandler(UserAlreadyExistException.class)
-    public final ResponseEntity<String> handleUserAlreadyExistExceptions(Exception ex, WebRequest request) {
+    public final ResponseEntity<String> handleUserAlreadyExistException(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
-    // Add a new ExceptionHandler for UserNotExistExceptions
     @ExceptionHandler(UserNotExistException.class)
-    public final ResponseEntity<String> handleUserNotExistExceptions(Exception ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    public final ResponseEntity<String> handleUserNotExistException(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(StayNotExistException.class)
@@ -31,4 +30,8 @@ public class CustomExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(GCSUploadException.class)
+    public final ResponseEntity<String> handleGCSUploadExceptions(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
