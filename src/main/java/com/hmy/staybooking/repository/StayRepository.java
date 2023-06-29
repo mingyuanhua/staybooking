@@ -14,6 +14,7 @@ import java.util.List;
 // besides location, the guest number is another parameter for search
 @Repository
 public interface StayRepository extends JpaRepository<Stay, Long> {
+
     List<Stay> findByHost(User user);
 
     Stay findByIdAndHost(Long id, User host);
