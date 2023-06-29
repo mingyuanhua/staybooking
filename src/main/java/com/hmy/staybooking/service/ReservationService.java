@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+// Add list, save and delete related functions
+// we need to check active reservations before deleting a stay
 @Service
 public class ReservationService {
     private final ReservationRepository reservationRepository;
