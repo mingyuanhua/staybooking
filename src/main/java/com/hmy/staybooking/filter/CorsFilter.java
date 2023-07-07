@@ -11,6 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// Support Cross-Origin Resource Source Sharing CORS Request
+// Cross-origin resource sharing is a mechanism that allows restricted resources on a
+// web page to be requested from another domain outside the domain from which the first
+// resource were served.
+
+// To enable CORS on the backend, we need to handle the CORS preflight requests and return
+// the dedicated CORS header to the frontend
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter extends OncePerRequestFilter {
