@@ -14,11 +14,12 @@ public class StaybookingApplication {
         Logger logger = LoggerFactory.getLogger(StaybookingApplication.class);
         Connection connection = null;
         Statement statement = null;
-        String postgresUrl = "localhost";
+        String postgresUrl = "database-1.ctjqwwabjzzb.us-east-2.rds.amazonaws.com";
+        String username = "postgres";
+        String password = "11111111";
         try {
-            // 原生的JDBC
             logger.debug("Creating database if not exist...");
-            connection = DriverManager.getConnection("jdbc:postgresql://" + postgresUrl + ":5432/", "postgres", "secret");
+            connection = DriverManager.getConnection("jdbc:postgresql://" + postgresUrl + ":5432/", username, password);
             statement = connection.createStatement();
             statement.executeQuery("SELECT count(*) FROM pg_database WHERE datname = 'staybooking'");
             ResultSet resultSet = statement.getResultSet();
